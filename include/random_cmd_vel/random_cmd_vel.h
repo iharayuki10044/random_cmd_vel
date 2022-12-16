@@ -40,11 +40,12 @@ class RandomCmdVel
 
     Window calc_dynamic_window(const geometry_msgs::Twist&);
     trajectorys calc_trajectorys(const Window&);
+    geometry_msgs::Twist choice_trajectry(const trajectorys&);
 
+    void process(void);
 
     private:
-
-        double Hz;
+        double HZ;
         double CHANGE_RATE;
 
         double MAX_VELOCITY;
@@ -53,6 +54,14 @@ class RandomCmdVel
 
         double MAX_ACCELERATION;
         double MAX_D_YAWRATE;
+
+        double VELOCITY_RESOLUTION;
+        double YAWRATE_RESOLUTION;
+
+        bool is_odom_received;
+
+        Window now_window;
+        trajectorys now_trajectorys;
 
         geometry_msgs::Twist current_velocity;
 

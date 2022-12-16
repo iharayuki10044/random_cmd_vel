@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- bag options -->
+    <!-- <arg name="bagfile" default="/share/share/RWRC/rwrc21_dl/bagfiles/ikuta/2021-08-01-18-20-44.bag" /> -->
+    <!-- <arg name="bagfile" default="/share/share/RWRC/rwrc21_dl/bagfiles/tukuba/2021-10-23-15-38-56.bag" /> -->
+    <arg name="bagfile" default="/share/share/RWRC/rwrc21_dl/bagfiles/vtc_depth/rgbd_split/2022-11-28-18-26-20.bag" />
+    <!-- <arg name="bagfile" default="/share/private/26th/ihara/bagfiles/sq2/d_kan/2022-05-02-13-38-00.bag" /> -->
+ 
+    <arg name="start" default="0.0" />
+	<arg name="duration" default="0.0" />
+    <arg name="delay" default="0.0" />
+	<arg name="play_speed_ratio" default="0.5" />
+	<param name="use_sim_time" value="true" />
+ 
+    <!-- play rosbag -->
+	<node pkg="rosbag" type="play" name="rosbag_play" output="screen" args="
+          $(arg bagfile)
+          -q
+          -l
+          --clock
+          ">
+	</node>
+
+    <node pkg="random_cmd_vel" name="random_cmd_vel" type="random_cmd_vel" output="screen">
+        <param name="HZ" value="10"/> 
+        <param name="MAX_VELOCITY" value="1.2"/>
+        <param name="MIN_VELOCITY" value="0.0"/>
+        <param name="MAX_YAWRATE" value="0.8"/>
+        <param name="MAX_ACCELERATION" value="10.0"/>
+        <param name="MAX_D_YAWRATE" value="10.0"/>
+    </node>
+
+    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find random_cmd_vel)/bag_config.rviz" />
+    <!-- <node pkg="rqt_plot" name="rqt_plot" type="rqt_plot"/> -->
+    <!-- <node pkg="rqt_graph" name="rqt_graph" type="rqt_graph"/> -->
+</launch>
