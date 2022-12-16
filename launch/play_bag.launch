@@ -29,9 +29,10 @@
         <param name="MAX_YAWRATE" value="0.8"/>
         <param name="MAX_ACCELERATION" value="10.0"/>
         <param name="MAX_D_YAWRATE" value="10.0"/>
+        <remap from="/odom" to="/odom_unit04"/>
     </node>
 
-    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find random_cmd_vel)/bag_config.rviz" />
+    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find random_cmd_vel)/config/bag_config.rviz" />
     <!-- <node pkg="rqt_plot" name="rqt_plot" type="rqt_plot"/> -->
     <!-- <node pkg="rqt_graph" name="rqt_graph" type="rqt_graph"/> -->
 </launch>
