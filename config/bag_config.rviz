@@ -68,7 +68,7 @@ Visualization Manager:
       Marker Topic: /random_trajectories
       Name: MarkerArray
       Namespaces:
-        {}
+        trajectories: true
       Queue Size: 100
       Value: true
   Enabled: true
@@ -117,7 +117,7 @@ Visualization Manager:
       Near Clip Distance: 0.009999999776482582
       Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 1.585397481918335
+      Yaw: 3.085397481918335
     Saved: ~
 Window Geometry:
   Displays:

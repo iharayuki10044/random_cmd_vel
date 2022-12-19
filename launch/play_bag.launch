@@ -29,6 +29,7 @@
         <param name="MAX_YAWRATE" value="0.8"/>
         <param name="MAX_ACCELERATION" value="10.0"/>
         <param name="MAX_D_YAWRATE" value="10.0"/>
+        <param name="IS_VISUALIZE" value="true"/>
         <remap from="/odom" to="/odom_unit04"/>
     </node>
 

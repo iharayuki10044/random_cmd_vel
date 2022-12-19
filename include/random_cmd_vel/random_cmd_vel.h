@@ -43,7 +43,8 @@ class RandomCmdVel
 
     Window calc_dynamic_window(const geometry_msgs::Twist&);
     trajectories calc_trajectories(const Window&);
-    geometry_msgs::Twist choice_trajectory(const trajectories&, const int&);
+    std::vector<geometry_msgs::Twist> choice_trajectory(const trajectories&, const int&);
+    void publish_cmd_vel(const std::vector<geometry_msgs::Twist>&, const int&, const bool, const ros::Publisher&);
 
     void process(void);
     void visualize_trajectories(const trajectories&, const int&, const ros::Publisher&);
@@ -70,6 +71,8 @@ class RandomCmdVel
 
         std::string ROBOT_FRAME; 
 
+        Window now_window;
+        trajectories now_trajectories;
 
         geometry_msgs::Twist current_velocity;
 
